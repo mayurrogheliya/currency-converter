@@ -1,3 +1,3 @@
-import Options from "./screens/Options";
+import Home from "./screens/Home";
 
-export default () => <Options />;
+export default () => <Home />;
