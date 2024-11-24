@@ -1,11 +1,11 @@
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text,View, TouchableOpacity } from "react-native";
 import colors from "../constants/colors";
 import React from "react";
 
 const styles = StyleSheet.create({
   row: {
     paddingHorizontal: 20,
-    paddingVertical: 16,
+    paddingVertical: 15,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -36,4 +36,4 @@ export const RowItem = ({ rightIcon, textName, onPress }: RowItemType) => {
   );
 };
 
-export const RowSeparator = () => <view style={styles.separator} />;
+export const RowSeparator = () => <View style={styles.separator} />;
