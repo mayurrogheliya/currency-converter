@@ -1,48 +1,35 @@
 import React from "react";
-import { SafeAreaView, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native";
 import colors from "../constants/colors";
+import { RowItem, RowSeparator } from "../components/RowItem";
 import { Entypo } from "@expo/vector-icons";
-
-const styles = StyleSheet.create({
-  row: {
-    paddingHorizontal: 20,
-    paddingVertical: 16,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  text: {
-    fontSize: 18,
-    color: colors.text,
-  },
-  separator: {
-    backgroundColor: colors.border,
-    height: StyleSheet.hairlineWidth,
-    marginLeft: 20,
-  },
-});
 
 export default () => {
   return (
     <SafeAreaView>
-      <TouchableOpacity style={styles.row}>
-        <Text style={styles.text}>Themes</Text>
-        <Entypo name="chevron-right" size={20} color={colors.blue} />
-      </TouchableOpacity>
+      <RowItem
+        onPress={() => alert("You get themes!")}
+        textName="Themes"
+        rightIcon={
+          <Entypo name="chevron-right" size={20} color={colors.blue} />
+        }
+      />
 
-      <view style={styles.separator} />
+      <RowSeparator />
 
-      <TouchableOpacity style={styles.row}>
-        <Text style={styles.text}>React Native Basic</Text>
-        <Entypo name="export" size={20} color={colors.blue} />
-      </TouchableOpacity>
+      <RowItem
+        onPress={() => alert("You get typescript!")}
+        textName="React Native with Typescript"
+        rightIcon={<Entypo name="export" size={20} color={colors.blue} />}
+      />
 
-      <view style={styles.separator} />
+      <RowSeparator />
 
-      <TouchableOpacity style={styles.row}>
-        <Text style={styles.text}>React native basic by example</Text>
-        <Entypo name="export" size={20} color={colors.blue} />
-      </TouchableOpacity>
+      <RowItem
+        onPress={() => alert("You get Typescript!")}
+        textName="React Native with Expo"
+        rightIcon={<Entypo name="export" size={20} color={colors.blue} />}
+      />
     </SafeAreaView>
   );
 };
