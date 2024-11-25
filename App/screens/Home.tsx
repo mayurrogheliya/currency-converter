@@ -14,6 +14,7 @@ import { ConversionInput } from "../components/ConversionInput";
 import { format } from "date-fns";
 import { Button } from "../components/BUtton";
 import { useEffect, useState } from "react";
+import { KeyboardSpacer } from "../components/KeyboardSpacer";
 
 const screen = Dimensions.get("window");
 
@@ -102,7 +103,9 @@ export default () => {
             )}`}
           </Text>
           <Button text="Reverse Currencies" onPress={() => alert("todo!")} />
-          <View style={{ height: screen.height }} />
+          <KeyboardSpacer
+            onToggle={(visible) => setScrollEnabled(visible)}
+          />
         </View>
       </ScrollView>
     </View>
