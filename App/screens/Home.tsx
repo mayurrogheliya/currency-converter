@@ -39,7 +39,7 @@ export default () => {
         text="GBP"
         value="123"
         onButtonPress={() => alert("todo!..")}
-        keyboardType="numeric"
+        editable={false}
       />
     </View>
   );
