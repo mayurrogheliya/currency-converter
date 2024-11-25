@@ -1,6 +1,7 @@
 import {
   Dimensions,
   Image,
+  Keyboard,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -12,6 +13,7 @@ import bgImage from "../assets/images/bg.png";
 import { ConversionInput } from "../components/ConversionInput";
 import { format } from "date-fns";
 import { Button } from "../components/BUtton";
+import { useEffect, useState } from "react";
 
 const screen = Dimensions.get("window");
 
@@ -51,10 +53,26 @@ export default () => {
   const quoteCurrency = "GBP";
   const date = "2024-11-25";
 
+  const [scrollEnabled, setScrollEnabled] = useState(false);
+
+  useEffect(() => {
+    const showListener = Keyboard.addListener("keyboardDidShow", () =>
+      setScrollEnabled(true)
+    );
+    const hideListener = Keyboard.addListener("keyboardDidHide", () =>
+      setScrollEnabled(false)
+    );
+
+    return () => {
+      showListener.remove();
+      hideListener.remove();
+    };
+  }, []);
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={colors.blue} />
-      <ScrollView>
+      <ScrollView scrollEnabled={scrollEnabled}>
         <View style={styles.content}>
           <View style={styles.logoContainer}>
             <Image
