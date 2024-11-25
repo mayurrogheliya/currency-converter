@@ -12,7 +12,7 @@ const openURL = (url: string) => {
 
 export default () => {
   return (
-    <SafeAreaView style={{ paddingTop: 25, flex: 1 }}>
+    <SafeAreaView style={{flex: 1 }}>
       <ScrollView>
         <RowItem
           onPress={() => openURL("httpsds://mayurport.netlify.app/")}
