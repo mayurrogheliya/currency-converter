@@ -48,12 +48,12 @@ const styles = StyleSheet.create({
 });
 
 export default () => {
-  const baseCurrency = "USD";
-  const conversionRate = 0.89824;
-  const quoteCurrency = "GBP";
-  const date = "2024-11-25";
+  const baseCurrency: string = "USD";
+  const conversionRate: number = 0.89824;
+  const quoteCurrency: string = "GBP";
+  const date: string = "2024-11-25";
 
-  const [scrollEnabled, setScrollEnabled] = useState(false);
+  const [scrollEnabled, setScrollEnabled] = useState<boolean>(false);
 
   useEffect(() => {
     const showListener = Keyboard.addListener("keyboardDidShow", () =>
