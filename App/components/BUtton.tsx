@@ -1,10 +1,4 @@
-import {
-  Dimensions,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import colors from "../constants/colors";
 import buttonIcon from "../assets/images/reverse.png";
 
