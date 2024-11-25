@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   content: {
-    paddingTop: screen.height * 0.2,
+    paddingTop: screen.height * 0.1,
   },
   logoContainer: {
     justifyContent: "center",
@@ -39,6 +39,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 30,
     textAlign: "center",
+    marginBottom: 5,
+  },
+  inputContainer: {
     marginBottom: 5,
   },
   text: {
@@ -83,19 +86,21 @@ export default () => {
             />
           </View>
           <Text style={styles.textHeader}>Currency Converter</Text>
-          <ConversionInput
-            text={baseCurrency}
-            onButtonPress={() => alert("todo!..")}
-            keyboardType="numeric"
-            value="123"
-            onChangeText={(text) => console.log("text", text)}
-          />
-          <ConversionInput
-            text={quoteCurrency}
-            value="123"
-            onButtonPress={() => alert("todo!..")}
-            editable={false}
-          />
+          <View style={styles.inputContainer}>
+            <ConversionInput
+              text={baseCurrency}
+              onButtonPress={() => alert("todo!..")}
+              keyboardType="numeric"
+              value="123"
+              onChangeText={(text) => console.log("text", text)}
+            />
+            <ConversionInput
+              text={quoteCurrency}
+              value="123"
+              onButtonPress={() => alert("todo!..")}
+              editable={false}
+            />
+          </View>
           <Text style={styles.text}>
             {`1 ${baseCurrency} = ${conversionRate} ${quoteCurrency} as of ${format(
               new Date(date),
