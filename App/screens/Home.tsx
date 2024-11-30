@@ -13,7 +13,7 @@ import bgImage from "../assets/images/bg.png";
 import { ConversionInput } from "../components/ConversionInput";
 import { format } from "date-fns";
 import { Button } from "../components/BUtton";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { KeyboardSpacer } from "../components/KeyboardSpacer";
 
 const screen = Dimensions.get("window");
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default () => {
+const Home:React.FC = () => {
   const baseCurrency: string = "USD";
   const conversionRate: number = 0.89824;
   const quoteCurrency: string = "GBP";
@@ -92,7 +92,7 @@ export default () => {
               onButtonPress={() => alert("todo!..")}
               keyboardType="numeric"
               value="123"
-              onChangeText={(text) => console.log("text", text)}
+              onChangeText={(text:string) => console.log("text", text)}
             />
             <ConversionInput
               text={quoteCurrency}
@@ -116,3 +116,5 @@ export default () => {
     </View>
   );
 };
+
+export default Home;

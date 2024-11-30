@@ -27,7 +27,11 @@ type RowItemType = {
   onPress: () => void;
 };
 
-export const RowItem = ({ rightIcon, textName, onPress }: RowItemType) => {
+export const RowItem: React.FC<RowItemType> = ({
+  rightIcon,
+  textName,
+  onPress,
+}) => {
   return (
     <TouchableOpacity style={styles.row} onPress={onPress}>
       <Text style={styles.text}>{textName}</Text>
@@ -36,4 +40,4 @@ export const RowItem = ({ rightIcon, textName, onPress }: RowItemType) => {
   );
 };
 
-export const RowSeparator = () => <View style={styles.separator} />;
+export const RowSeparator: React.FC = () => <View style={styles.separator} />;

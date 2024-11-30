@@ -7,6 +7,7 @@ import {
   View,
 } from "react-native";
 import colors from "../constants/colors";
+import React from "react";
 
 const styles = StyleSheet.create({
   container: {
@@ -45,14 +46,14 @@ interface ConversionInputType extends TextInputProps {
   onButtonPress: () => void;
 }
 
-export const ConversionInput = ({
+export const ConversionInput: React.FC<ConversionInputType> = ({
   text,
   onButtonPress,
   ...props
 }: ConversionInputType) => {
   const containerStyles = [
     styles.container,
-    props.editable == false ? styles.containerDisable : {},
+    props.editable === false ? styles.containerDisable : {},
   ];
   return (
     <View style={containerStyles}>

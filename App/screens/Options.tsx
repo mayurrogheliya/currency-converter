@@ -10,9 +10,9 @@ const openURL = (url: string) => {
   });
 };
 
-export default () => {
+const Options: React.FC = () => {
   return (
-    <SafeAreaView style={{flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
         <RowItem
           onPress={() => openURL("httpsds://mayurport.netlify.app/")}
@@ -44,3 +44,5 @@ export default () => {
     </SafeAreaView>
   );
 };
+
+export default Options;

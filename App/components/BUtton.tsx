@@ -1,6 +1,13 @@
-import { Image, StyleSheet, Text, TouchableOpacity } from "react-native";
+import {
+  GestureResponderEvent,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import colors from "../constants/colors";
 import buttonIcon from "../assets/images/reverse.png";
+import React from "react";
 
 const styles = StyleSheet.create({
   button: {
@@ -20,12 +27,12 @@ const styles = StyleSheet.create({
   },
 });
 
-type buttonParameters = {
-  onPress: () => void;
+interface ButtonProps {
+  onPress: (event: GestureResponderEvent) => void;
   text: string;
-};
+}
 
-export const Button = ({ onPress, text }: buttonParameters) => {
+export const Button: React.FC<ButtonProps> = ({ onPress, text }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.button}>
       <Image

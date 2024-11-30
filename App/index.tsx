@@ -1,3 +1,8 @@
+import React from "react";
 import Navigation from "./config/Navigation";
 
-export default () => <Navigation />;
+const App: React.FC = () => {
+  return <Navigation />;
+};
+
+export default App;

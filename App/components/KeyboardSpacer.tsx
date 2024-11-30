@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Dimensions, Keyboard, StyleSheet, View } from "react-native";
 
 const styles = StyleSheet.create({
@@ -13,7 +13,7 @@ type KeyboardSpacerType = {
   onToggle: (visible: boolean) => void;
 };
 
-export const KeyboardSpacer = ({ onToggle }: KeyboardSpacerType) => {
+export const KeyboardSpacer: React.FC<KeyboardSpacerType> = ({ onToggle }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [keyboardSpace, setKeyboardSpace] = useState<number>(0);
 
