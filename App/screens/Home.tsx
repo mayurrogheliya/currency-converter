@@ -6,6 +6,7 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from "react-native";
 import colors from "../constants/colors";
@@ -15,6 +16,8 @@ import { format } from "date-fns";
 import { Button } from "../components/BUtton";
 import React, { useEffect, useState } from "react";
 import { KeyboardSpacer } from "../components/KeyboardSpacer";
+import { Entypo } from "@expo/vector-icons";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const screen = Dimensions.get("window");
 
@@ -49,9 +52,13 @@ const styles = StyleSheet.create({
     color: colors.white,
     textAlign: "center",
   },
+  header: {
+    alignItems: "flex-end",
+    marginHorizontal: 20,
+  },
 });
 
-const Home:React.FC = () => {
+const Home: React.FC = ({ navigation }) => {
   const baseCurrency: string = "USD";
   const conversionRate: number = 0.89824;
   const quoteCurrency: string = "GBP";
@@ -77,6 +84,12 @@ const Home:React.FC = () => {
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={colors.blue} />
       <ScrollView scrollEnabled={scrollEnabled}>
+        <SafeAreaView style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.push("Options")}>
+            <Entypo name="cog" size={32} color={colors.white} />
+          </TouchableOpacity>
+        </SafeAreaView>
+
         <View style={styles.content}>
           <View style={styles.logoContainer}>
             <Image
@@ -92,7 +105,7 @@ const Home:React.FC = () => {
               onButtonPress={() => alert("todo!..")}
               keyboardType="numeric"
               value="123"
-              onChangeText={(text:string) => console.log("text", text)}
+              onChangeText={(text: string) => console.log("text", text)}
             />
             <ConversionInput
               text={quoteCurrency}
@@ -108,9 +121,7 @@ const Home:React.FC = () => {
             )}`}
           </Text>
           <Button text="Reverse Currencies" onPress={() => alert("todo!")} />
-          <KeyboardSpacer
-            onToggle={(visible) => setScrollEnabled(visible)}
-          />
+          <KeyboardSpacer onToggle={(visible) => setScrollEnabled(visible)} />
         </View>
       </ScrollView>
     </View>
