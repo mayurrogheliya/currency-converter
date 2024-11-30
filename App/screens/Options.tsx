@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, Linking, SafeAreaView, ScrollView } from "react-native";
+import { Alert, Linking, SafeAreaView, ScrollView, StatusBar } from "react-native";
 import colors from "../constants/colors";
 import { RowItem, RowSeparator } from "../components/RowItem";
 import { Entypo } from "@expo/vector-icons";
@@ -13,9 +13,10 @@ const openURL = (url: string) => {
 const Options: React.FC = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
+      <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
       <ScrollView>
         <RowItem
-          onPress={() => openURL("httpsds://mayurport.netlify.app/")}
+          onPress={() => openURL("https://mayurport.netlify.app/")}
           textName="My Portfolio"
           rightIcon={
             <Entypo name="chevron-right" size={20} color={colors.blue} />
