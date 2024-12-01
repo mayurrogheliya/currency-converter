@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 
 type RowItemType = {
   textName: string;
-  rightIcon: React.ReactNode;
+  rightIcon?: React.ReactNode;
   onPress: () => void;
 };
 
