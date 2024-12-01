@@ -102,7 +102,9 @@ const Home: React.FC = ({ navigation }) => {
           <View style={styles.inputContainer}>
             <ConversionInput
               text={baseCurrency}
-              onButtonPress={() => alert("todo!..")}
+              onButtonPress={() =>
+                navigation.push("CurrencyList", { title: "Base Currency" })
+              }
               keyboardType="numeric"
               value="123"
               onChangeText={(text: string) => console.log("text", text)}
@@ -110,7 +112,9 @@ const Home: React.FC = ({ navigation }) => {
             <ConversionInput
               text={quoteCurrency}
               value="123"
-              onButtonPress={() => alert("todo!..")}
+              onButtonPress={() =>
+                navigation.push("CurrencyList", { title: "Quote Currency" })
+              }
               editable={false}
             />
           </View>
