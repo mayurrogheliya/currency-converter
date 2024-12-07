@@ -14,10 +14,11 @@ import bgImage from "../assets/images/bg.png";
 import { ConversionInput } from "../components/ConversionInput";
 import { format } from "date-fns";
 import { Button } from "../components/BUtton";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { KeyboardSpacer } from "../components/KeyboardSpacer";
 import { Entypo } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { ConversionContext } from "../util/ConversionContext";
 
 const screen = Dimensions.get("window");
 
@@ -59,20 +60,19 @@ const styles = StyleSheet.create({
 });
 
 const Home: React.FC = ({ navigation }) => {
-  // const baseCurrency: string = "USD";
-  // const quoteCurrency: string = "GBP";
-  const [baseCurrency, setBaseCurrency] = useState<string>("USD");
-  const [quoteCurrency, setQuoteCurrency] = useState<string>("GBP");
+  const {
+    baseCurrency,
+    quoteCurrency,
+    swapCurrency,
+    setBaseCurrency,
+    setQuoteCurrency,
+  } = useContext(ConversionContext);
+
   const [value, setValue] = useState<string>("100");
   const [scrollEnabled, setScrollEnabled] = useState<boolean>(false);
 
   const conversionRate: number = 0.89824;
   const date: Date = new Date();
-
-  const swapCurrency: React.FC = (): void => {
-    setBaseCurrency(quoteCurrency);
-    setQuoteCurrency(baseCurrency);
-  };
 
   useEffect(() => {
     const showListener = Keyboard.addListener("keyboardDidShow", () =>
