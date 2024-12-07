@@ -60,13 +60,8 @@ const styles = StyleSheet.create({
 });
 
 const Home: React.FC = ({ navigation }) => {
-  const {
-    baseCurrency,
-    quoteCurrency,
-    swapCurrency,
-    setBaseCurrency,
-    setQuoteCurrency,
-  } = useContext(ConversionContext);
+  const { baseCurrency, quoteCurrency, swapCurrency } =
+    useContext(ConversionContext);
 
   const [value, setValue] = useState<string>("100");
   const [scrollEnabled, setScrollEnabled] = useState<boolean>(false);
@@ -113,8 +108,7 @@ const Home: React.FC = ({ navigation }) => {
               onButtonPress={() =>
                 navigation.push("CurrencyList", {
                   title: "Base Currency",
-                  activeCurrency: baseCurrency,
-                  onChange: (currency: string) => setBaseCurrency(currency),
+                  isBaseCurrency: true,
                 })
               }
               keyboardType="numeric"
@@ -129,8 +123,7 @@ const Home: React.FC = ({ navigation }) => {
               onButtonPress={() =>
                 navigation.push("CurrencyList", {
                   title: "Quote Currency",
-                  activeCurrency: quoteCurrency,
-                  onChange: (currency: string) => setQuoteCurrency(currency),
+                  isBaseCurrency: false,
                 })
               }
               editable={false}
