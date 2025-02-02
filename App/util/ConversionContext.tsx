@@ -1,5 +1,6 @@
 import React, { createContext, ReactNode, useEffect, useState } from "react";
 import { api } from "./api";
+import { Alert } from "react-native";
 
 interface ConversionContextType {
   baseCurrency: string;
@@ -27,17 +28,21 @@ export const ConversionContextProvider: React.FC<
   const [quoteCurrency, setQuoteCurrency] = useState(DEFAULT_QUOTED_CURRENCY);
   const [date, setDate] = useState<string | null>(null);
   const [rates, setRates] = useState<Record<string, number>>({});
+  const [isLoading, setIsLoading] = useState<boolean | null>(true);
 
   const setBaseCurrency = (currency: string) => {
-    return api(`/latest?base=${currency}`)
+    setIsLoading(true);
+    return api(`/latestsdfs?base=${currency}`)
       .then((response) => {
-        console.log("response: ", response);
         _setBaseCurrency(currency);
         setDate(response.date);
         setRates(response.rates);
       })
       .catch((error) => {
-        console.error("error: ", error);
+        Alert.alert("Sorry, something went wrong.", error.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -54,6 +59,7 @@ export const ConversionContextProvider: React.FC<
     setQuoteCurrency,
     date,
     rates,
+    isLoading,
   };
 
   useEffect(() => {
