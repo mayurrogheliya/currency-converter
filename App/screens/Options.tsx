@@ -16,7 +16,7 @@ const Options: React.FC = () => {
       <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
       <ScrollView>
         <RowItem
-          onPress={() => openURL("https://mayurport.netlify.app/")}
+          onPress={() => openURL("https://mayurrogheliya.netlify.app/")}
           textName="My Portfolio"
           rightIcon={
             <Entypo name="chevron-right" size={20} color={colors.blue} />
