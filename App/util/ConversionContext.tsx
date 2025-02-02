@@ -32,11 +32,7 @@ export const ConversionContextProvider: React.FC<
 
   const setBaseCurrency = (currency: string) => {
     setIsLoading(true);
-<<<<<<< HEAD
     return api(`/latest?base=${currency}`)
-=======
-    return api(`/latestsdfs?base=${currency}`)
->>>>>>> 5d634dba83ff6f63e66c22850f6c4e0479ff88cd
       .then((response) => {
         _setBaseCurrency(currency);
         setDate(response.date);
