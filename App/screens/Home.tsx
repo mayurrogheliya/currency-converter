@@ -60,14 +60,13 @@ const styles = StyleSheet.create({
 });
 
 const Home: React.FC = ({ navigation }) => {
-  const { baseCurrency, quoteCurrency, swapCurrency } =
+  const { baseCurrency, quoteCurrency, swapCurrency, date, rates } =
     useContext(ConversionContext);
 
   const [value, setValue] = useState<string>("100");
   const [scrollEnabled, setScrollEnabled] = useState<boolean>(false);
 
-  const conversionRate: number = 0.89824;
-  const date: Date = new Date();
+  const conversionRate: number = rates[quoteCurrency];
 
   useEffect(() => {
     const showListener = Keyboard.addListener("keyboardDidShow", () =>

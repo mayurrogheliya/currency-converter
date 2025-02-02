@@ -1,4 +1,5 @@
-import React, { createContext, ReactNode, useState } from "react";
+import React, { createContext, ReactNode, useEffect, useState } from "react";
+import { api } from "./api";
 
 interface ConversionContextType {
   baseCurrency: string;
@@ -16,11 +17,29 @@ interface ConversionContextProviderProps {
   children: ReactNode;
 }
 
+const DEFAULT_BASE_CURRENCY = "USD";
+const DEFAULT_QUOTED_CURRENCY = "INR";
+
 export const ConversionContextProvider: React.FC<
   ConversionContextProviderProps
 > = ({ children }) => {
-  const [baseCurrency, setBaseCurrency] = useState("USD");
-  const [quoteCurrency, setQuoteCurrency] = useState("GBP");
+  const [baseCurrency, _setBaseCurrency] = useState(DEFAULT_BASE_CURRENCY);
+  const [quoteCurrency, setQuoteCurrency] = useState(DEFAULT_QUOTED_CURRENCY);
+  const [date, setDate] = useState<string | null>(null);
+  const [rates, setRates] = useState<Record<string, number>>({});
+
+  const setBaseCurrency = (currency: string) => {
+    return api(`/latest?base=${currency}`)
+      .then((response) => {
+        console.log("response: ", response);
+        _setBaseCurrency(currency);
+        setDate(response.date);
+        setRates(response.rates);
+      })
+      .catch((error) => {
+        console.error("error: ", error);
+      });
+  };
 
   const swapCurrency = () => {
     setBaseCurrency(quoteCurrency);
@@ -33,7 +52,13 @@ export const ConversionContextProvider: React.FC<
     swapCurrency,
     setBaseCurrency,
     setQuoteCurrency,
+    date,
+    rates,
   };
+
+  useEffect(() => {
+    setBaseCurrency(DEFAULT_BASE_CURRENCY);
+  }, []);
 
   return (
     <ConversionContext.Provider value={contextValue}>
